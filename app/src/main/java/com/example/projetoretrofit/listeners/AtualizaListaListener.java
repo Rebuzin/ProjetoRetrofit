@@ -7,7 +7,7 @@ public interface AtualizaListaListener {
 
     void atualizaLista(DadosDeputadoDTO dados);
 
-    void atualizaDespesas(DespesasDTO despesasDTO);
-
-    void atualizaLista(DadosDeputadoDTO dados, DespesasDTO despesas);
+//    void atualizaDespesas(DespesasDTO despesasDTO);
+//
+//    void atualizaLista(DadosDeputadoDTO dados, DespesasDTO despesas);
 }

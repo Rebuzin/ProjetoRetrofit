@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.exemploretrofit.R;
 import com.example.projetoretrofit.adapter.DeputadosListAdapter;
-import com.example.projetoretrofit.adapter.DespesasListAdapter;
 import com.example.projetoretrofit.dto.DadosDTO;
 import com.example.projetoretrofit.dto.DadosDeputadoDTO;
 import com.example.projetoretrofit.dto.DespesasDTO;
@@ -29,40 +27,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         lvDeputados = findViewById(R.id.lvDeputados);
         edNome = findViewById(R.id.edNome);
-
-
     }
 
     public void getDeputados(View view) {
         new ExecutaAPI(this, this).execute(edNome.getText().toString());
-    }
 
+    }
 
     @Override
     public void atualizaLista(DadosDeputadoDTO dados) {
-
-    }
-
-    @Override
-    public void atualizaDespesas(DespesasDTO despesasDTO) {
-
-    }
-
-    @Override
-    public void atualizaLista(DadosDeputadoDTO dados, DespesasDTO despesas) {
         DeputadosListAdapter adapter =
                 new DeputadosListAdapter(this,
                         (ArrayList<DadosDTO>) dados.getDados());
 
         lvDeputados.setAdapter(adapter);
-
-        DespesasListAdapter adapterD =
-                new DespesasListAdapter(this,
-                        (ArrayList<DespesasDTO>) despesas.getDespesas());
-
-        lvDeputados.setAdapter(adapterD);
     }
 }

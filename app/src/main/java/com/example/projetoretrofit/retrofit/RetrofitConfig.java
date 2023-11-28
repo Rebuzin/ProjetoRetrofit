@@ -29,8 +29,8 @@ public class RetrofitConfig {
         return this.retrofit.create(DeputadoService.class);
     }
 
-    public DespesaService despesaService(){
-        return this.retrofit.create(DespesaService.class);
+    public DeputadoService buscarDespesasDeputado(){
+        return this.retrofit.create(DeputadoService.class);
     }
 
 

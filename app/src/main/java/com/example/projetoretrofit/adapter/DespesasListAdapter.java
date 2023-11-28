@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.projetoretrofit.R;
+import com.example.projetoretrofit.dto.DadosDTO;
 import com.example.projetoretrofit.dto.DespesasDTO;
 
 import java.util.ArrayList;
@@ -17,8 +18,9 @@ public class DespesasListAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<DespesasDTO> despesas;
 
+
     public DespesasListAdapter(Context context,
-                                ArrayList<DespesasDTO> despesas) {
+                               ArrayList<DespesasDTO> despesas) {
         this.context = context;
         this.despesas = despesas;
     }
@@ -47,10 +49,10 @@ public class DespesasListAdapter extends BaseAdapter {
                             viewGroup, false);
         }
         TextView tvDespesas = view.findViewById(R.id.tvDespesas);
-        DespesasDTO despesas = despesas.get(i);
-        tvDespesas.setText(despesas.getAno()+
-                " - "+despesas.getCnpjCpfFornecedor()+
-                "/"+despesas.getCodDocumento());
+        DespesasDTO despesa = despesas.get(i);
+        tvDespesas.setText(despesa.getAno()+
+                " - "+despesa.getCnpjCpfFornecedor()+
+                "/"+despesa.getCodDocumento());
 
 
         return view;

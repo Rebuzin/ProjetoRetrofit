@@ -39,14 +39,12 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
         return null;
     }
 
-
-
     public void executarAPI(String nome){
         try{
             Call<DadosDeputadoDTO> call = new RetrofitConfig()
                     .deputadoService().buscarDadosDeputado(nome);
-            Call<DespesasDTO> callDespesas = new RetrofitConfig()
-                    .deputadoService().buscarDespesasDeputado();
+//            Call<DespesasDTO> callDespesas = new RetrofitConfig()
+//                    .deputadoService().buscarDespesasDeputado(id);
 
             //ESTUDAR
             call.enqueue(new Callback<DadosDeputadoDTO>() {
@@ -66,23 +64,23 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                     Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
                 }
             });
-            callDespesas.enqueue(new Callback<DespesasDTO>() {
-                @Override
-                public void onResponse(Call<DespesasDTO> callDespesas, Response<DespesasDTO> response) {
-                    DespesasDTO despesasDTO = response.body();
-
-                    listener.atualizaDespesas(despesasDTO);
-
-                    progressBar.dismiss();
-                    Toast.makeText(ctx, "Execução finalizada!",
-                            Toast.LENGTH_LONG).show();
-                }
-
-                @Override
-                public void onFailure(Call<DespesasDTO> callDespesas, Throwable t) {
-                    Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
-                }
-            });
+//            callDespesas.enqueue(new Callback<DespesasDTO>() {
+//                @Override
+//                public void onResponse(Call<DespesasDTO> callDespesas, Response<DespesasDTO> response) {
+//                    DespesasDTO despesasDTO = response.body();
+//
+//                    listener.atualizaDespesas(despesasDTO);
+//
+//                    progressBar.dismiss();
+//                    Toast.makeText(ctx, "Execução finalizada!",
+//                            Toast.LENGTH_LONG).show();
+//                }
+//
+//                @Override
+//                public void onFailure(Call<DespesasDTO> callDespesas, Throwable t) {
+//                    Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
+//                }
+//            });
         }catch (Exception ex){
             Log.e("PHS", "Erro: "+ex.getMessage());
         }

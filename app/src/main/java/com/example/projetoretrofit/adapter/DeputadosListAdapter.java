@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.exemploretrofit.R;
+import com.example.projetoretrofit.R;
 import com.example.projetoretrofit.dto.DadosDTO;
 
 import java.util.ArrayList;
