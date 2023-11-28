@@ -56,12 +56,19 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                     DadosDeputadoDTO dadosDeputadoDTO = response.body();
 //                    DadosDTO dadosDTO = response.body();
 
-                    listener.atualizaLista(dadosDeputadoDTO);
+                    //Se retornou dados busca as despesas do primeiro deputado encontrado
+                    if(dadosDeputadoDTO != null && !dadosDeputadoDTO.getDados().isEmpty()){
+                        executarAPIDespesas(dadosDeputadoDTO.getDados().get(0).getId());
+
+                        listener.atualizaLista(dadosDeputadoDTO);
 //                    listener.atualizaDespesas(DadosDTO);
 
-                    progressBar.dismiss();
-                    Toast.makeText(ctx, "Execução finalizada!",
-                            Toast.LENGTH_LONG).show();
+                        progressBar.dismiss();
+                        Toast.makeText(ctx, "Execução finalizada!",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+
                 }
 
                 @Override
@@ -73,30 +80,30 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
             Log.e("PHS", "Erro: "+ex.getMessage());
         }
     }
-//    public void executarAPI(String id){
-//        try{
-//            Call<DespesasDTO> callDespesas = new RetrofitConfig()
-//                    .deputadoService().buscarDespesasDeputado(id);
-//
-//            callDespesas.enqueue(new Callback<DespesasDTO>() {
-//                @Override
-//                public void onResponse(Call<DespesasDTO> callDespesas, Response<DespesasDTO> response) {
-//                    DespesasDTO despesasDTO = response.body();
-//
-//                    listener.atualizaDespesas(despesasDTO);
-//
-//                    progressBar.dismiss();
-//                    Toast.makeText(ctx, "Execução finalizada!",
-//                            Toast.LENGTH_LONG).show();
-//                }
-//
-//                @Override
-//                public void onFailure(Call<DespesasDTO> callDespesas, Throwable t) {
-//                    Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
-//                }
-//            });
-//        }catch (Exception ex){
-//            Log.e("PHS", "Erro: "+ex.getMessage());
-//        }
-//    }
+    public void executarAPIDespesas(int id){
+        try{
+            Call<DespesasDTO> callDespesas = new RetrofitConfig()
+                    .deputadoService().buscarDespesasDeputado(id);
+
+            callDespesas.enqueue(new Callback<DespesasDTO>() {
+                @Override
+                public void onResponse(Call<DespesasDTO> callDespesas, Response<DespesasDTO> response) {
+                    DespesasDTO despesasDTO = response.body();
+
+                    listener.atualizaDespesas(despesasDTO);
+
+                    progressBar.dismiss();
+                    Toast.makeText(ctx, "Execução finalizada! " + (despesasDTO.getDados() != null ? despesasDTO.getDados().size() : 0)  + " Despesa(s) encontrada(s)!",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<DespesasDTO> callDespesas, Throwable t) {
+                    Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
+                }
+            });
+        }catch (Exception ex){
+            Log.e("PHS", "Erro: "+ex.getMessage());
+        }
+    }
 }

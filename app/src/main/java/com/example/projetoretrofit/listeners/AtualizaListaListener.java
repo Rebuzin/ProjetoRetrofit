@@ -12,7 +12,7 @@ public interface AtualizaListaListener {
 
     void getDeputados(View view);
 
-    void atualizaDespesas(DadosDTO dados);
+    void atualizaDespesas(DespesasDTO dados);
 //
 //    void atualizaLista(DadosDeputadoDTO dados, DespesasDTO despesas);
 }

@@ -10,10 +10,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.projetoretrofit.adapter.DeputadosListAdapter;
+import com.example.projetoretrofit.adapter.DespesasListAdapter;
 import com.example.projetoretrofit.controller.DeputadosController;
 import com.example.projetoretrofit.controller.DespesasController;
 import com.example.projetoretrofit.dto.DadosDTO;
 import com.example.projetoretrofit.dto.DadosDeputadoDTO;
+import com.example.projetoretrofit.dto.DadosDespesaDTO;
 import com.example.projetoretrofit.dto.DespesasDTO;
 import com.example.projetoretrofit.listeners.AtualizaListaListener;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -100,14 +102,14 @@ public class MainActivity extends AppCompatActivity
     }
 
         @Override
-    public void atualizaDespesas(DadosDTO dados) {
-        DeputadosListAdapter adapter =
-                new DeputadosListAdapter(this, (ArrayList<DadosDTO>) dados.getDados());
+    public void atualizaDespesas(DespesasDTO dados) {
+            DespesasListAdapter adapter =
+                new DespesasListAdapter(this, (ArrayList<DadosDespesaDTO>) dados.getDados());
 
-        lvDeputados.setAdapter(adapter);
-            DadosDTO dadosDTO = new DadosDTO();
-            DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
-//        DespesasController.executarAPI(dados.getId(), this);
+//        lvDeputados.setAdapter(adapter);
+//            DadosDespesaDTO dadosDTO = new DadosDespesaDTO();
+//            DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
+////        DespesasController.executarAPI(dados.getId(), this);
     }
 
 //    @Override

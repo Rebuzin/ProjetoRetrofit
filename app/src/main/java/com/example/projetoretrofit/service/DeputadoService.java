@@ -5,6 +5,7 @@ import com.example.projetoretrofit.dto.DespesasDTO;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface DeputadoService {
@@ -15,5 +16,5 @@ public interface DeputadoService {
 
     //end-point
     @GET("deputados/{id}/despesas")
-    Call<DespesasDTO> buscarDespesasDeputado(@Query("id") Integer id);
+    Call<DespesasDTO> buscarDespesasDeputado(@Path("id") Integer id);
 }
