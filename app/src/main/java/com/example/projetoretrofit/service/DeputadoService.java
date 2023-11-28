@@ -15,5 +15,5 @@ public interface DeputadoService {
 
     //end-point
     @GET("deputados/{id}/despesas")
-    Call<DespesasDTO> buscarDespesasDeputado(@Query("id") int id);
+    Call<DespesasDTO> buscarDespesasDeputado(@Query("id") Integer id);
 }

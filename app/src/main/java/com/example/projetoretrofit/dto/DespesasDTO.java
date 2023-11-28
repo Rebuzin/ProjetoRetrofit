@@ -22,6 +22,15 @@ public class DespesasDTO {
     private String valorGlosa;
     private String valorLiquido;
 
+    private List<DadosDTO> dados;
+
+    public List<DadosDTO> getDados() {
+        return dados;
+    }
+    public void setDados(List<DadosDTO> dados) {
+        this.dados = dados;
+    }
+
 
     //DTO - DATA TRANSFER OBJECT
     private List<DespesasDTO> despesas;

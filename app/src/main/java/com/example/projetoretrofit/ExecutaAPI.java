@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.projetoretrofit.dto.DadosDTO;
 import com.example.projetoretrofit.dto.DadosDeputadoDTO;
 import com.example.projetoretrofit.dto.DespesasDTO;
 import com.example.projetoretrofit.listeners.AtualizaListaListener;
@@ -39,20 +40,24 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
         return null;
     }
 
+
     public void executarAPI(String nome){
         try{
             Call<DadosDeputadoDTO> call = new RetrofitConfig()
                     .deputadoService().buscarDadosDeputado(nome);
-//            Call<DespesasDTO> callDespesas = new RetrofitConfig()
-//                    .deputadoService().buscarDespesasDeputado(id);
+//            Call<DadosDTO> callS = new RetrofitConfig()
+//                    .deputadoService().buscarDespesasDeputado();
+
 
             //ESTUDAR
             call.enqueue(new Callback<DadosDeputadoDTO>() {
                 @Override
                 public void onResponse(Call<DadosDeputadoDTO> call, Response<DadosDeputadoDTO> response) {
                     DadosDeputadoDTO dadosDeputadoDTO = response.body();
+//                    DadosDTO dadosDTO = response.body();
 
                     listener.atualizaLista(dadosDeputadoDTO);
+//                    listener.atualizaDespesas(DadosDTO);
 
                     progressBar.dismiss();
                     Toast.makeText(ctx, "Execução finalizada!",
@@ -64,6 +69,15 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                     Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
                 }
             });
+        }catch (Exception ex){
+            Log.e("PHS", "Erro: "+ex.getMessage());
+        }
+    }
+//    public void executarAPI(String id){
+//        try{
+//            Call<DespesasDTO> callDespesas = new RetrofitConfig()
+//                    .deputadoService().buscarDespesasDeputado(id);
+//
 //            callDespesas.enqueue(new Callback<DespesasDTO>() {
 //                @Override
 //                public void onResponse(Call<DespesasDTO> callDespesas, Response<DespesasDTO> response) {
@@ -81,9 +95,8 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
 //                    Log.e("PHS", "ERRO CHAMAR API: "+t.getMessage());
 //                }
 //            });
-        }catch (Exception ex){
-            Log.e("PHS", "Erro: "+ex.getMessage());
-        }
-
-    }
+//        }catch (Exception ex){
+//            Log.e("PHS", "Erro: "+ex.getMessage());
+//        }
+//    }
 }

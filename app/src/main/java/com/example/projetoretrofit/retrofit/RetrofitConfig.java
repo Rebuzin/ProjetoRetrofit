@@ -18,7 +18,7 @@ public class RetrofitConfig {
         this.retrofit = new Retrofit.Builder()
                 //URL SERVIDOR
                 .baseUrl(BASE_URL)
-                .client(okHttpClient)
+//                .client(okHttpClient)
                 //CONVERSOR JSON
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();

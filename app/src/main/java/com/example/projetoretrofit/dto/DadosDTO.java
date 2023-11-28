@@ -1,5 +1,8 @@
 package com.example.projetoretrofit.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DadosDTO {
     private String email;
     private int id;
@@ -11,7 +14,14 @@ public class DadosDTO {
     private String uriPartido;
     private String urlFoto;
 
+    private List<DadosDTO> dados;
 
+    public List<DadosDTO> getDados() {
+        return new ArrayList<>(id);
+    }
+    public void setDados(List<DadosDTO> dados) {
+        this.dados = dados;
+    }
 
     public String getEmail() {
         return email;
