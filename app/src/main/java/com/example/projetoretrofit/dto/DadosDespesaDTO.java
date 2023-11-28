@@ -22,6 +22,16 @@ public class DadosDespesaDTO {
     private String valorGlosa;
     private String valorLiquido;
 
+    private List<DadosDespesaDTO> dadosDespesas;
+
+    public List<DadosDespesaDTO> getDadosDespesas() {
+        return dadosDespesas;
+    }
+
+    public void setDados(List<DadosDespesaDTO> dadosDespesas) {
+        this.dadosDespesas = dadosDespesas;
+    }
+
     public String getAno() {
         return ano;
     }

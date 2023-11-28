@@ -4,8 +4,6 @@ import java.util.List;
 
 public class DespesasDTO {
 
-
-
     private List<DadosDespesaDTO> dados;
     private List<LinkDTO> links;
 

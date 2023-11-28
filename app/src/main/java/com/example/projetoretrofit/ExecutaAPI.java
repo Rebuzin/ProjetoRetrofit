@@ -56,6 +56,8 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                     DadosDeputadoDTO dadosDeputadoDTO = response.body();
 //                    DadosDTO dadosDTO = response.body();
 
+
+
                     //Se retornou dados busca as despesas do primeiro deputado encontrado
                     if(dadosDeputadoDTO != null && !dadosDeputadoDTO.getDados().isEmpty()){
                         executarAPIDespesas(dadosDeputadoDTO.getDados().get(0).getId());
@@ -67,8 +69,6 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                         Toast.makeText(ctx, "Execução finalizada!",
                                 Toast.LENGTH_LONG).show();
                     }
-
-
                 }
 
                 @Override
@@ -93,8 +93,8 @@ public class ExecutaAPI extends AsyncTask<String, Void, Void> {
                     listener.atualizaDespesas(despesasDTO);
 
                     progressBar.dismiss();
-                    Toast.makeText(ctx, "Execução finalizada! " + (despesasDTO.getDados() != null ? despesasDTO.getDados().size() : 0)  + " Despesa(s) encontrada(s)!",
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ctx, "Execução finalizada! " + (despesasDTO.getDados() != null ? despesasDTO.getDados().size() : 0)  + " Despesa(s) encontrada(s)!",
+//                            Toast.LENGTH_LONG).show();
                 }
 
                 @Override

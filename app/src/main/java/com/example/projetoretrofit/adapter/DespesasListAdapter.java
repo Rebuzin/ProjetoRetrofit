@@ -46,14 +46,21 @@ public class DespesasListAdapter extends BaseAdapter {
 
         if (view == null){
             view = LayoutInflater.from(context).
-                    inflate(R.layout.deputados_list_item,
+                    inflate(R.layout.despesas_list_item,
                             viewGroup, false);
         }
         TextView tvDespesas = view.findViewById(R.id.tvDespesas);
+        TextView tvDespesa = view.findViewById(R.id.tvDespesa);
         DadosDespesaDTO despesa = despesas.get(i);
-        tvDespesas.setText(despesa.getAno()+
-                " - "+despesa.getCnpjCpfFornecedor()+
-                "/"+despesa.getCodDocumento());
+        tvDespesas.setText(
+                "Ano: " + despesa.getAno() + "\n" +
+                "Cnpj Fornecedor: " + despesa.getCnpjCpfFornecedor() +"\n" +
+                "Documento: " +despesa.getCodDocumento()+"\n" +
+                "Mês: " +despesa.getMes()+"\n" +
+                "Gasto: " +despesa.getValorLiquido()+"\n"
+        );
+
+//        tvDespesa.setText("Despesas: ");
 
 
         return view;

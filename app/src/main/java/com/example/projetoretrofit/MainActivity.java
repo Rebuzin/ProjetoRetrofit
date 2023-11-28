@@ -27,10 +27,8 @@ public class MainActivity extends AppCompatActivity
 
     private ExecutaAPI executaAPI;
     private ListView lvDeputados;
-    private TextView tvDeputados;
+    private ListView lvDespesas;
     private EditText edNome;
-
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         lvDeputados = findViewById(R.id.lvDeputados);
-        tvDeputados = findViewById(R.id.tvDeputados);
+        lvDespesas = findViewById(R.id.lvDespesas);
         edNome = findViewById(R.id.edNome);
 
         DadosDTO dados = new DadosDTO();
@@ -49,38 +47,6 @@ public class MainActivity extends AppCompatActivity
 
         lvDeputados.setAdapter(adapter);
 
-        DeputadosController.buscarDadosDeputado("Paulo", tvDeputados);
-
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Carregando....");
-        progressDialog.setTitle("Sincronizar Dados");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.show();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000); // Tempo de espera em milissegundos
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressDialog.dismiss();
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }).start();
-
-//        DeputadosController.executarAPI(edNome.toString(), this, tvDeputados);
-//        DadosDTO dadosDTO = new DadosDTO();
-//        DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
-
-//        DeputadosController.executarAPI(edNome.toString(), this);
-//        DespesasController.executarAPI(lvDeputados.getId(), this);
     }
 
     public void getDeputados(View view) {
@@ -97,27 +63,31 @@ public class MainActivity extends AppCompatActivity
                         (ArrayList<DadosDTO>) dados.getDados());
 
         lvDeputados.setAdapter(adapter);
-//        DespesasController.executarAPI(dados.getDados(id));
-
     }
 
-        @Override
+    @Override
+    public void atualizaListaDespesas(DadosDespesaDTO dadosDespesas) {
+        DespesasListAdapter adapterDespesas =
+                new DespesasListAdapter(this,
+                        (ArrayList<DadosDespesaDTO>) dadosDespesas.getDadosDespesas());
+
+        lvDespesas.setAdapter(adapterDespesas);
+    }
+
+    @Override
     public void atualizaDespesas(DespesasDTO dados) {
-            DespesasListAdapter adapter =
-                new DespesasListAdapter(this, (ArrayList<DadosDespesaDTO>) dados.getDados());
+
+        DespesasListAdapter adapterDespesas =
+                new DespesasListAdapter(this,
+                        (ArrayList<DadosDespesaDTO>) dados.getDados());
+
+        lvDespesas.setAdapter(adapterDespesas);
+//            DespesasListAdapter adapter =
+//                new DespesasListAdapter(this, (ArrayList<DadosDespesaDTO>) dados.getDados());
 
 //        lvDeputados.setAdapter(adapter);
 //            DadosDespesaDTO dadosDTO = new DadosDespesaDTO();
 //            DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
 ////        DespesasController.executarAPI(dados.getId(), this);
     }
-
-//    @Override
-//    public void atualizaDespesas(DespesasDTO despesas) {
-//        DespesasListAdapter adapter =
-//                new DespesasListAdapter(this,
-//                        (ArrayList<DespesasDTO>) despesas.getDespesas());
-//
-//        lvDeputados.setAdapter(adapter);
-//    }
 }

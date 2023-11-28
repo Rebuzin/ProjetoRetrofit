@@ -48,10 +48,13 @@ public class DeputadosListAdapter extends BaseAdapter {
                             viewGroup, false);
         }
         TextView tvNome = view.findViewById(R.id.tvNome);
+        TextView tvDeputado = view.findViewById(R.id.tvDeputado);
         DadosDTO dado = lista.get(i);
         tvNome.setText(dado.getNome()+
                 " - "+dado.getSiglaPartido()+
                 "/"+dado.getSiglaUf());
+
+//        tvDeputado.setText("Deputado(s): ");
 
         return view;
     }

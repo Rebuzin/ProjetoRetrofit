@@ -19,14 +19,40 @@
         android:text="Executar Consulta"
         android:onClick="getDeputados"/>
 
-    <ListView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvDeputados"/>
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/tvDeputado"
+        android:text="O Deputado e suas respectivas despesas serão exibidos logo abaixo após consulta:"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvDeputados"/>
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:text=""
+        />
+
+    <ListView
+        android:id="@+id/lvDeputados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/tvDespesa"
+        android:text="----------------------------------------"
+        />
+
+    <ListView
+        android:id="@+id/lvDespesas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
