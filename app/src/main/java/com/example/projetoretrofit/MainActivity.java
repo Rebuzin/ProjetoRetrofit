@@ -83,9 +83,9 @@ public class MainActivity extends AppCompatActivity
 
     public void getDeputados(View view) {
         new ExecutaAPI(this, this).execute(edNome.getText().toString());
-        DeputadosController.buscarDadosDeputado(edNome.getText().toString(), tvDeputados);
-        DadosDTO dadosDTO = new DadosDTO();
-        DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
+//        DeputadosController.buscarDadosDeputado(edNome.getText().toString(), tvDeputados);
+//        DadosDTO dadosDTO = new DadosDTO();
+//        DespesasController.executarAPI(dadosDTO.getId(), this, tvDeputados);
     }
 
     @Override
