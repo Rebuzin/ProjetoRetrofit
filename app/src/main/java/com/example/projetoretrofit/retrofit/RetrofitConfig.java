@@ -18,7 +18,7 @@ public class RetrofitConfig {
         this.retrofit = new Retrofit.Builder()
                 //URL SERVIDOR
                 .baseUrl(BASE_URL)
-//                .client(okHttpClient)
+                .client(okHttpClient)
                 //CONVERSOR JSON
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
@@ -29,9 +29,9 @@ public class RetrofitConfig {
         return this.retrofit.create(DeputadoService.class);
     }
 
-    public DeputadoService buscarDespesasDeputado(){
-        return this.retrofit.create(DeputadoService.class);
-    }
+//    public DeputadoService buscarDespesasDeputado(){
+//        return this.retrofit.create(DeputadoService.class);
+//    }
 
 
 }
